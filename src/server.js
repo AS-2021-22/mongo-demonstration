@@ -30,14 +30,46 @@ app.get('/',(_,res) => {
     res.sendFile(path.join(htmlFolder,'index.html'))
 })
 
-app.post('/all_users', async (req,res) => {
-    
+app.post('/user_data', async (req,res) => {
+   
     try{
-        const users = await User.find()
-        res.status(200).json(users)
+        if(req.body._id){
+            const user = await User.findById(req.body._id)
+            res.status(200).json(user)
+        } 
+        else if (req.body.filter){
+            const user = await User.findOne(req.body.filter)
+            res.status(200).json(user)
+        }
+        else {
+            const users = await User.find()
+            res.status(200).json(users)
+        }
     } catch(e){
         res.status(500).json({'err':e.message})
     }
+
+})
+
+app.post('/car_data', async (req,res) => {
+    
+    try{
+        if(req.body._id){
+            const car = await Car.findById(req.body._id)
+            res.status(200).json(car)
+        } 
+        else if (req.body.filter){
+            const car = await Car.findOne(req.body.filter)
+            res.status(200).json(car)
+        }
+        else{
+            const cars = await Car.find()
+            res.status(200).json(cars)
+        }
+    } catch(e){
+        res.status(500).json({'err':e.message})
+    }
+
 })
 
 
@@ -76,6 +108,10 @@ app.route('/user')
     })
 
 app.route('/car')
+
+    .get((_,res) => {
+        res.sendFile(path.join(htmlFolder,'all_cars.html'))
+    })
 
     .post(async (req,res) => {
         try{

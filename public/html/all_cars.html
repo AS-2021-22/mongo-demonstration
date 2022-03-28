@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./../css/all_users.css"/>
+    <link rel="stylesheet" href="./../css/all_cars.css"/>
     <title>Document</title>
 </head>
 <body onload="get_users()">
-    <p id="users"></p>
+    <p id="cars"></p>
 
     <script>
         function get_users(){
-            const users = document.getElementById('users')
+            const cars = document.getElementById('cars')
 
-            fetch('/user_data',{
+            fetch('/car_data',{
                 headers:{
                     'Content-Type':'application/json'
                 },
@@ -21,7 +21,7 @@
                 if(res.status == 200){
                     res.json().then(json => {
                         console.log(json)
-                        users.innerText = JSON.stringify(json)
+                        cars.innerText = JSON.stringify(json)
                     })
                 }
             }).catch(e => console.log(e.message))
