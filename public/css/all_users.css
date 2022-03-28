@@ -1,3 +1,32 @@
 body{
-    background-color: aquamarine;
+    background-color: #7fffd4;
+}
+
+
+div.card{
+    margin-top: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table{
+    width: 100%;
+}
+
+td{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+td.value{
+    width: max-content;
+    text-align: right;
+}
+
+td.title{
+    width: min-content;
+    text-align: left;
 }

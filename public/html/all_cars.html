@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./../css/all_cars.css"/>
-    <title>Document</title>
+    <title>Cars</title>
 </head>
-<body onload="get_users()">
-    <p id="cars"></p>
+<body onload="get_cars()">
+
+    <div id="cars"></div>
 
     <script>
-        function get_users(){
+        function get_cars(){
             const cars = document.getElementById('cars')
 
             fetch('/car_data',{
@@ -21,10 +22,40 @@
                 if(res.status == 200){
                     res.json().then(json => {
                         console.log(json)
-                        cars.innerText = JSON.stringify(json)
+
+                        generate_car_cards(json)
+                        
                     })
                 }
             }).catch(e => console.log(e.message))
+
+        }
+
+        function generate_car_cards(json_list){
+
+            const cars = document.getElementById('cars')
+
+            console.log(json_list)
+
+            json_list.forEach(car => {
+                console.log('hi')
+                const s =
+                    `<div class="card">
+                        <img src="${car.imgUrl}" alt="pandino" class="card_image">
+                        <table>
+                            <tr>
+                                <td class="title"><h4>Model:</h4></td>
+                                <td class="value"><h3>${car.model}</h3></td>
+                            </tr>
+                            <tr>
+                                <td class="title"><h4>Price:</h4></td>
+                                <td class="value"><h3>${car.price}</h3></td>
+                            </tr>
+                        </table>
+                    </div>`
+
+                cars.innerHTML += s
+            });
 
         }
     </script>

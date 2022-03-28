@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./../css/all_users.css"/>
-    <title>Document</title>
+    <title>Users</title>
 </head>
 <body onload="get_users()">
-    <p id="users"></p>
+
+    <div id="users"></div>
 
     <script>
         function get_users(){
@@ -21,12 +22,54 @@
                 if(res.status == 200){
                     res.json().then(json => {
                         console.log(json)
-                        users.innerText = JSON.stringify(json)
+                        generate_user_cards(json)
+                        //users.innerText = JSON.stringify(json)
                     })
                 }
             }).catch(e => console.log(e.message))
 
         }
+
+        function generate_user_cards(json_list){
+
+            const users = document.getElementById('users')
+
+            json_list.forEach(user => {
+
+                let s_car_owned = ""
+
+                user.car_owned.forEach(car => {
+                    s_car_owned += `<li>${car.model}, ${car.targa}</li>\n`
+                })
+
+
+                const s =
+                `<div class="card">
+                    <table>
+                        <tr>
+                            <td class="title"><h4>Name:</h4></td>
+                            <td class="value"><h3>${user.name}</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="title"><h4>Surname:</h4></td>
+                            <td class="value"><h3>${user.surname}</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="title"><h4>Registration Date:</h4></td>
+                            <td class="value"><h3>${user.registration_date}</h3></td>
+                        </tr>
+                        <tr>
+                            <td class="title"><h4>Car owned:</h4></td>
+                            <td class="value"><h3><ul>${s_car_owned}</ul></h3></td>
+                        </tr>
+                    </table>
+                </div>`
+
+                users.innerHTML += s
+            });
+
+        }
+
     </script>
 </body>
 </html>
