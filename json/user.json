@@ -8,5 +8,14 @@
         "name":"Marta",
         "surname":"Carminati",
         "CF":"CRMMRT04P62H910Y"
+    },
+    {
+        "name":"Isaac",
+        "surname":"Newton",
+        "CF":"NWTISC67A90H910K",
+        "car_owned":[
+            {"model":"Lancia Y","targa":"HG890IJ"},
+            {"model":"Ferrari Rossa","targa":"UH890PL"}
+        ]
     }
 ]

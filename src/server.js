@@ -37,7 +37,6 @@ app.route('/user')
         try{
             const newUser = new User(req.body)
             const userRegistered =await newUser.save()
-            console.log(userRegistered)
             res.status(200).json({'successfull':userRegistered})
         } catch(e){
             res.status(500).json({'error':e.message})
@@ -46,7 +45,7 @@ app.route('/user')
 
     .put(async (req,res) => {
         try{
-            const updatedUser = await User.updateOne({_id:req._id},req.body)
+            const updatedUser = await User.updateOne({_id:req.body._id},req.body)
             res.status(200).json({'successfull':updatedUser})
         }catch(e){
             res.status(500).json({'error':e.message})
