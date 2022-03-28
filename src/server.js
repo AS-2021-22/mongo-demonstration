@@ -72,6 +72,26 @@ app.post('/car_data', async (req,res) => {
 
 })
 
+app.get('/buy_car',(_,res) => {
+    res.sendFile(path.join(htmlFolder,'buy_car.html'))
+})
+
+app.post('/buy_car',async (req,res) => {
+    try{
+        const car = await Car.findById(req.body.car_id)
+        const buyedCar = {model:car.model,targa:"AA111AA"}
+        const user = User.findById(req.body.user_id)
+        let new_car_owned = user.car_owned ? user.car_owned : []
+        new_car_owned.push(buyedCar)
+        await User.updateOne({"_id":req.body.user_id},{car_owned: new_car_owned})
+        await Car.deleteOne({'_id':req.body.car_id})
+        res.status(200).json({'successfull':'user updated'})
+    } catch(e){
+        console.log(e.message)
+        res.status(500).json({'error':e.message})
+    }
+})
+
 
 app.get('/add_car',(req,res)=> {
     res.sendFile(path.join(htmlFolder,'add_car.html'))

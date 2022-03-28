@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./../css/buy_car.css">
+    <title>Buy a car</title>
+</head>
+<body>
+    <textarea id="json_request" placeholder="Write json request here, fields: {user_id,car_id}"></textarea>
+    <button onclick="buy_car()">Register User</button>
+
+    <script>
+        function buy_car(){
+            fetch('/buy_car',{
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                method: 'POST',
+                body:document.getElementById('json_request').value
+            }).then(res => {
+                if(res.status == 200){
+                    res.json().then(json => alert(JSON.stringify(json)))
+                } else alert('error occurred')
+            }).catch(e => alert(e.message))
+        }
+    </script>
+
+</body>
+</html>
