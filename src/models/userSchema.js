@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    cognome: {
+    surname: {
         type: String,
         required: true
     },
@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
     registration_date:{
         type: Date,
         default: Date.now
+    },
+    car_owned:{
+        type:Array,
+        default: []
     }
 })
  
