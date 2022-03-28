@@ -30,8 +30,21 @@ app.get('/',(_,res) => {
     res.sendFile(path.join(htmlFolder,'index.html'))
 })
 
+app.post('/all_users', async (req,res) => {
+    
+    try{
+        const users = await User.find()
+        res.status(200).json(users)
+    } catch(e){
+        res.status(500).json({'err':e.message})
+    }
+})
+
 
 app.route('/user')
+    .get((_,res) => {
+        res.sendFile(path.join(htmlFolder,'all_users.html'))
+    })
 
     .post(async (req,res) => {
         try{
@@ -62,6 +75,37 @@ app.route('/user')
         }
     })
 
+app.route('/car')
+
+    .post(async (req,res) => {
+        try{
+            const newCar = new Car(req.body)
+            const carRegistered =await newCar.save()
+            res.status(200).json({'successfull':carRegistered})
+        } catch(e){
+            res.status(500).json({'error':e.message})
+        }
+    })
+
+    .put(async (req,res) => {
+        try{
+            const updatedCar = await Car.updateOne({_id:req.body._id},req.body)
+            res.status(200).json({'successfull':updatedCar})
+        }catch(e){
+            res.status(500).json({'error':e.message})
+        }
+        
+    })
+
+    .delete( async (req,res) => {
+        try{
+            const deletedCar = await Car.remove({_id:req.body._id})
+            res.status(200).json({'successfull, Car deleted:':deletedCar})
+        }catch(e){
+            res.status(500).json({'error':e.message})
+        }
+    })
+
 /**
  * try{
 
@@ -70,4 +114,4 @@ app.route('/user')
     }
  */
 
-    app.listen(PORT,() => console.log(`> Server listening on PORT: ${PORT}`))   
+app.listen(PORT,() => console.log(`> Server listening on PORT: ${PORT}`))   

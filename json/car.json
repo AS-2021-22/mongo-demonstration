@@ -1,0 +1,12 @@
+[
+    {
+        "model":"Pandino",
+        "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/4/4c/Fiat_panda_1_v_sst.jpg",
+        "price":10000
+    },
+    {
+        "model":"FIAT PUNTO",
+        "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Fiat_Punto_II_front_20100509.jpg/1200px-Fiat_Punto_II_front_20100509.jpg",
+        "price":15000
+    }
+]
