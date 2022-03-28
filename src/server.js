@@ -77,6 +77,10 @@ app.get('/add_car',(req,res)=> {
     res.sendFile(path.join(htmlFolder,'add_car.html'))
 })
 
+app.get('/add_user',(req,res)=> {
+    res.sendFile(path.join(htmlFolder,'add_user.html'))
+})
+
 
 app.route('/user')
     .get((_,res) => {
