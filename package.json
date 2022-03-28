@@ -1,16 +1,18 @@
 {
   "name": "mongo-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API for mongo DB demonstration",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Carminati Giovanni",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongodb": "^4.4.1"
   },
