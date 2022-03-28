@@ -73,6 +73,11 @@ app.post('/car_data', async (req,res) => {
 })
 
 
+app.get('/add_car',(req,res)=> {
+    res.sendFile(path.join(htmlFolder,'add_car.html'))
+})
+
+
 app.route('/user')
     .get((_,res) => {
         res.sendFile(path.join(htmlFolder,'all_users.html'))
@@ -119,6 +124,7 @@ app.route('/car')
             const carRegistered =await newCar.save()
             res.status(200).json({'successfull':carRegistered})
         } catch(e){
+            console.log(e.message)
             res.status(500).json({'error':e.message})
         }
     })

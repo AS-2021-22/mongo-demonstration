@@ -8,5 +8,10 @@
         "model":"FIAT PUNTO",
         "imgUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Fiat_Punto_II_front_20100509.jpg/1200px-Fiat_Punto_II_front_20100509.jpg",
         "price":15000
+    },
+    {
+        "model":"Ferrari",
+        "imgUrl":"https://cdn-1.motorsport.com/images/amp/YP3Q7WX2/s1000/charles-leclerc-ferrari-f1-75-.jpg",
+        "price":100000
     }
 ]
