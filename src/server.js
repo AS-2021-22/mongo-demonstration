@@ -4,6 +4,9 @@ const mongoose          = require('mongoose')
 const path              = require('path')
                           require('dotenv/config')
 
+const Car = require('./models/carSchema')
+const User = require('./models/userSchema')
+
 const app = express()
 const PORT = process.env.PORT || 3000
 const htmlFolder = path.join(__dirname,'..','public','html')
