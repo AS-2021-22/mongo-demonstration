@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "mongo":"nodemon src/mongo_demonstration.js"
   },
   "keywords": [],
   "author": "Carminati Giovanni",
